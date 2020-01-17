@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t puboe/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true puboe/docker-react npm run test
